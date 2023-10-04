@@ -1,0 +1,59 @@
+CREATE TABLE [dbo].[Customer] (
+    [CustomerID]  INT           NOT NULL,
+    [Forename]    NVARCHAR (50) NULL,
+    [Surname]     NVARCHAR (50) NULL,
+    [Address]     VARCHAR (100) NULL,
+    [TelNo]       VARCHAR (11)  NULL,
+    [DateOfBirth] DATE          NULL,
+    [Archive]     INT           NULL,
+    [Town]        NVARCHAR (30) NULL,
+    [Postcode]    NVARCHAR (9)  NULL,
+    [Email]       NVARCHAR (30) NULL,
+    PRIMARY KEY CLUSTERED ([CustomerID] ASC)
+);
+
+CREATE TABLE [dbo].[Employees] (
+    [EmployeeID] INT           NOT NULL,
+    [Forename]   NVARCHAR (50) NULL,
+    [Surname]    NVARCHAR (50) NULL,
+    [Email]      NVARCHAR (50) NULL,
+    [Schedule]   NVARCHAR (1)  NULL,
+    [Archive]    NVARCHAR (1)  NULL,
+    PRIMARY KEY CLUSTERED ([EmployeeID] ASC)
+);
+
+CREATE TABLE [dbo].[Treatment] (
+    [TreatmentID]   INT          NOT NULL,
+    [TreatmentName] VARCHAR (50) NULL,
+    [Duration]      INT          NULL,
+    [Cost]          INT          NULL,
+    PRIMARY KEY CLUSTERED ([TreatmentID] ASC)
+);
+
+CREATE TABLE [dbo].[Bookings] (
+    [CustomerID]  INT      NULL,
+    [EmployeeID]  INT      NULL,
+    [RoomNum]     INT      NULL,
+    [DateTime]    DATETIME NULL,
+    [BookingID]   INT      NOT NULL,
+    [Duration]    INT      NULL,
+    [ColumnIndex] INT      NULL,
+    [Archive]     INT      NULL,
+    PRIMARY KEY CLUSTERED ([BookingID] ASC),
+    FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([EmployeeID]),
+    FOREIGN KEY ([CustomerID]) REFERENCES [dbo].[Customer] ([CustomerID])
+);
+
+CREATE TABLE [dbo].[Bookings] (
+    [CustomerID]  INT      NULL,
+    [EmployeeID]  INT      NULL,
+    [RoomNum]     INT      NULL,
+    [DateTime]    DATETIME NULL,
+    [BookingID]   INT      NOT NULL,
+    [Duration]    INT      NULL,
+    [ColumnIndex] INT      NULL,
+    [Archive]     INT      NULL,
+    PRIMARY KEY CLUSTERED ([BookingID] ASC),
+    FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([EmployeeID]),
+    FOREIGN KEY ([CustomerID]) REFERENCES [dbo].[Customer] ([CustomerID])
+);
