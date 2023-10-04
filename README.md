@@ -7,7 +7,8 @@ Project consists of a simple program using C# and Visual Studios 2019 that allow
 
 <h2>Languages and Utilities Used</h2>
 
-- <b>C#</b> 
+- <b>C#</b>
+- <b>SQL</b> 
 - <b>Visual Studios 2019</b>
 
 <h2>Environments Used </h2>
